@@ -1,1 +1,1 @@
-web: python bot.py
+bot-telegram-erasmusu.py
