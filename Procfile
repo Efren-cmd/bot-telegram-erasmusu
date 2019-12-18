@@ -1,1 +1,1 @@
-worker: python bot-telegram-erasmusu.py
+bot: python bot-telegram-erasmusu.py
