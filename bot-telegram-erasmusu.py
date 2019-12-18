@@ -114,7 +114,7 @@ def main():
 
     # Add conversation handler with predefined states:
     conv_handler = ConversationHandler(
-        entry_points=[CommandHandler('start', start)],
+        entry_points=[CommandHandler('start', start),CommandHandler('menu', menu)],
 
         states={
             SET_LANG: [MessageHandler(Filters.regex('^(ES|EN)$'), set_lang)],
