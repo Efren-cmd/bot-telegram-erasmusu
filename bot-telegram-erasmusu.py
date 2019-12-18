@@ -3,6 +3,7 @@
 Basic example for a bot that uses inline keyboards.
 """
 import logging
+import os
 import telegram.ext
 from telegram.ext import Updater, CommandHandler, MessageHandler, RegexHandler
 from telegram.ext import ConversationHandler, CallbackQueryHandler, Filters
