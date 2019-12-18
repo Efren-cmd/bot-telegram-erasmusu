@@ -81,8 +81,7 @@ def button(update, context):
     elif update.callback_query.data == '8': query.edit_message_text(text="Hello. Please write your inquiry to bookings@erasmusu.com and one agent will get in touch with you as soon as possible")
     elif update.callback_query.data == '9': query.edit_message_text(text="Hello. Please write your inquiry to info@erasmusu.com and one agent will get in touch with you as soon as possible")
     elif update.callback_query.data == '10': query.edit_message_text(text="Hello. Please write your inquiry to info@erasmusu.com and one agent will get in touch with you as soon as possible")
-
-
+    return ConversationHandler.END
 
 def help(update, context):
     """
@@ -107,7 +106,6 @@ def main():
 
     updater.dispatcher.add_handler(CallbackQueryHandler(button))
     updater.dispatcher.add_handler(CommandHandler('menu', menu))
-    updater.dispatcher.add_handler(CommandHandler('start', start))
 
 
     # Get the dispatcher to register handlers:
