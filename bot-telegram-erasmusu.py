@@ -104,7 +104,7 @@ def main():
     """
     global LANG
     # Create the EventHandler and pass it your bot's token.
-    updater = Updater("{os.environ["BOT_KEY"]}", use_context=True)
+    updater = Updater({os.environ["BOT_KEY"]}", use_context=True)
 
     updater.dispatcher.add_handler(CallbackQueryHandler(button))
     updater.dispatcher.add_handler(CommandHandler('menu', menu))
