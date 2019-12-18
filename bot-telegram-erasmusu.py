@@ -27,9 +27,8 @@ def start(update, context):
 
     reply_keyboard = [['ES', 'EN']]
     update.message.reply_text(
-    "Please select a language to start. / Por favor selecciona un idioma \
-        para comenzar.",
-        reply_markup=ReplyKeyboardMarkup(reply_keyboard, one_time_keyboard=True))
+    "Please select a language to start. / Por favor selecciona un idioma para comenzar.",
+        reply_markup=ReplyKeyboardMarkup(reply_keyboard, one_time_keyboard=True,resize_keyboard=True))
 
     return SET_LANG
 
