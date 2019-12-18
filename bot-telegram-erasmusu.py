@@ -107,6 +107,7 @@ def main():
 
     updater.dispatcher.add_handler(CallbackQueryHandler(button))
     updater.dispatcher.add_handler(CommandHandler('menu', menu))
+    updater.dispatcher.add_handler(CommandHandler('start', start))
 
 
     # Get the dispatcher to register handlers:
@@ -114,7 +115,7 @@ def main():
 
     # Add conversation handler with predefined states:
     conv_handler = ConversationHandler(
-        entry_points=[CommandHandler('menu', menu)],
+        entry_points=[CommandHandler('start', start)],
 
         states={
             SET_LANG: [MessageHandler(Filters.regex('^(ES|EN)$'), set_lang)],
