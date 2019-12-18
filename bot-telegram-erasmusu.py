@@ -3,7 +3,6 @@
 Basic example for a bot that uses inline keyboards.
 """
 import logging
-import os
 from telegram.ext import Updater, CommandHandler, MessageHandler, RegexHandler
 from telegram.ext import ConversationHandler, CallbackQueryHandler, Filters
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup
@@ -94,7 +93,6 @@ def help(update, context):
     logger.info("User {} asked for help.".format(user.first_name))
     update.message.reply_text("Texto de ayuda",
                               reply_markup=ReplyKeyboardRemove())
-@app.route('/')
 
 def main():
     """
@@ -136,7 +134,5 @@ def main():
     # receives SIGINT, SIGTERM or SIGABRT:
     updater.idle()
 
-
-if __name__ == '__main__':  
-    port = int(os.environ.get('PORT', 5000))
-    app.run(host='0.0.0.0', port=port, debug=True)
+if __name__ == '__main__':
+    main()
