@@ -120,7 +120,7 @@ def main():
 
         },
 
-        fallbacks=[CommandHandler('help', help)]
+        fallbacks=[CommandHandler('help', help),CommandHandler('start', start)]
     )
 
     dp.add_handler(conv_handler)
