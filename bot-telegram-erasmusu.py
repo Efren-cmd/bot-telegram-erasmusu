@@ -33,7 +33,7 @@ def start(update, context):
     reply_markup = InlineKeyboardMarkup(keyboard)
     update.message.reply_text(
     "Hi, please select a language to start. / Hola, por favor selecciona un idioma para comenzar.",
-        reply_markup=ReplyKeyboardMarkup(reply_keyboard, one_time_keyboard=True))
+        reply_markup=ReplyKeyboardMarkup(reply_markup=reply_markup))
 
     return SET_LANG
 
@@ -46,7 +46,7 @@ def menu(update, context):
     reply_markup = InlineKeyboardMarkup(keyboard)
     update.message.reply_text(
     "Hi, please select a language to start. / Hola, por favor selecciona un idioma para comenzar.",
-        reply_markup=ReplyKeyboardMarkup(reply_keyboard, one_time_keyboard=True))
+        reply_markup=ReplyKeyboardMarkup(reply_markup=reply_markup))
 
     return SET_LANG
 
