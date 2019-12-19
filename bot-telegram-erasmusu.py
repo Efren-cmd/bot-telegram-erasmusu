@@ -18,7 +18,7 @@ logger = logging.getLogger(__name__)
 
 # Global vars:
 SET_LANG = range(1)
-global LANG
+
 
 #Add environment vars:
 TOKEN = os.environ['TOKEN']
@@ -26,6 +26,7 @@ TOKEN = os.environ['TOKEN']
 #Start def
 
 def start(update, context):
+    user = update.message.from_user
     nombre=user.first_name
     reply_keyboard = [['ES', 'EN']]
     update.message.reply_text("Hi, "+nombre+" .Please select a language to start. / Hola, "+nombre+". Por favor selecciona un idioma \
@@ -35,6 +36,7 @@ def start(update, context):
     return SET_LANG
 
 def menu(update, context):
+    user = update.message.from_user
     nombre=user.first_name
     reply_keyboard = [['ES', 'EN']]
     update.message.reply_text(
@@ -102,7 +104,7 @@ def main():
     states on each step of the flow. Each state has its own
     handler for the interaction with the user.
     """
-    global LANG
+
     # Create the EventHandler and pass it your bot's token.
     updater = Updater(TOKEN, use_context=True)
 
