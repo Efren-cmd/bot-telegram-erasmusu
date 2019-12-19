@@ -7,6 +7,7 @@ from telegram.ext import Updater, CommandHandler, MessageHandler, RegexHandler
 from telegram.ext import ConversationHandler, CallbackQueryHandler, Filters
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup
 from telegram import ReplyKeyboardMarkup, ReplyKeyboardRemove
+from boto.s3.connection import S3Connection
 
 # Enable logging
 logging.basicConfig(
@@ -102,7 +103,7 @@ def main():
     """
     global LANG
     # Create the EventHandler and pass it your bot's token.
-    updater = Updater("754596163:AAHdVWjKq1jzVd05YQx60V3qHbyLC7GFCYo", use_context=True)
+    updater = Updater(os.environ['S3_SECRET'], use_context=True)
 
     updater.dispatcher.add_handler(CallbackQueryHandler(button))
     updater.dispatcher.add_handler(CommandHandler('menu', menu))
@@ -125,7 +126,9 @@ def main():
 
     dp.add_handler(conv_handler)
 
-
+    #Add environment vars:
+    s3 = S3Connection(os.environ['TOKEN'])
+    
     # Start DisAtBot:
     updater.start_polling()
 
