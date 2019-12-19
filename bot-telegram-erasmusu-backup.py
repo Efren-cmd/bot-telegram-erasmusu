@@ -26,10 +26,7 @@ TOKEN = os.environ['TOKEN']
 #Start def
 
 def start(update, context):
-    keyboard = [[InlineKeyboardButton("English", callback_data='EN')],
-    [InlineKeyboardButton("Español", callback_data='ES')]]
-    reply_markup = InlineKeyboardMarkup(keyboard)
-    update.message.reply_text('Hi '+nombre+'! What you need?',reply_markup=reply_markup)
+    reply_keyboard = [['ES', 'EN']]
     update.message.reply_text(
     "Hi, please select a language to start. / Hola, por favor selecciona un idioma para comenzar.",
         reply_markup=ReplyKeyboardMarkup(reply_keyboard, one_time_keyboard=True))
@@ -50,8 +47,7 @@ def set_lang(update, context):
     user = update.message.from_user
     logger.info("Language of %s: %s", user.first_name, update.message.text)
     nombre=user.first_name
-    query = update.callback_query
-    if update.callback_query.data == 'EN':
+    if update.message.text == 'EN':
         keyboard = [[InlineKeyboardButton("I’m looking for accommodation (link)",url="https://cutt.ly/CrqHEz8", callback_data='1')],
         [InlineKeyboardButton("I need help with my booking", callback_data='2')],
         [InlineKeyboardButton("I’m a verified user and I need help with my profile", callback_data='3')],
@@ -61,7 +57,7 @@ def set_lang(update, context):
         update.message.reply_text('Hi '+nombre+'! What you need?',reply_markup=reply_markup)
 
 
-    if update.callback_query.data == 'ES':
+    if update.message.text == 'ES':
         keyboard = [[InlineKeyboardButton("Estoy buscando alojamiento (link)",url="https://cutt.ly/CrqHEz8", callback_data='6')],
         [InlineKeyboardButton("Necesito ayuda con mi alojamiento", callback_data='7')],
         [InlineKeyboardButton("Soy un usuario verificado y necesito ayuda con mi perfil", callback_data='8')],
