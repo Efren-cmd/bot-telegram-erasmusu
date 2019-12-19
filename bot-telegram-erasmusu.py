@@ -81,10 +81,10 @@ def button(update, context):
 
     query = update.callback_query
     if update.callback_query.data == '6': query.edit_message_text(text="Selected option: 1")
-    elif update.callback_query.data == '7': query.edit_message_text(text="Hello. Please write your inquiry to bookings@erasmusu.com and one agent will get in touch with you as soon as possible")
-    elif update.callback_query.data == '8': query.edit_message_text(text="Hello. Please write your inquiry to bookings@erasmusu.com and one agent will get in touch with you as soon as possible")
-    elif update.callback_query.data == '9': query.edit_message_text(text="Hello. Please write your inquiry to info@erasmusu.com and one agent will get in touch with you as soon as possible")
-    elif update.callback_query.data == '10': query.edit_message_text(text="Hello. Please write your inquiry to info@erasmusu.com and one agent will get in touch with you as soon as possible")
+    elif update.callback_query.data == '7': query.edit_message_text(text="Por favor escribe tu consulta a bookings@erasmusu.com y un agente se pondrá en contacto contigo lo antes posible.")
+    elif update.callback_query.data == '8': query.edit_message_text(text="Por favor escribe tu consulta a bookings@erasmusu.com y un agente se pondrá en contacto contigo lo antes posible.")
+    elif update.callback_query.data == '9': query.edit_message_text(text="Por favor escribe tu consulta a info@erasmusu.com y un agente se pondrá en contacto contigo lo antes posible.")
+    elif update.callback_query.data == '10': query.edit_message_text(text="Por favor escribe tu consulta a info@erasmusu.com y un agente se pondrá en contacto contigo lo antes posible.")
     return ConversationHandler.END
 
 def help(update, context):
@@ -129,7 +129,7 @@ def main():
 
     dp.add_handler(conv_handler)
 
-    
+
     # Start DisAtBot:
     updater.start_polling()
 
