@@ -34,8 +34,7 @@ def start(update, context):
     update.message.reply_text(
     "Hi, please select a language to start. / Hola, por favor selecciona un idioma para comenzar.",
         reply_markup=reply_markup)
-
-    return SET_LANG
+        return SET_LANG
 
 def menu(update, context):
 
@@ -47,8 +46,7 @@ def menu(update, context):
     update.message.reply_text(
     "Hi, please select a language to start. / Hola, por favor selecciona un idioma para comenzar.",
         reply_markup=reply_markup)
-
-    return SET_LANG
+        return SET_LANG
 
 
 def set_lang(update, context):
