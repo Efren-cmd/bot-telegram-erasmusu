@@ -8,7 +8,6 @@ from telegram.ext import Updater, CommandHandler, MessageHandler, RegexHandler
 from telegram.ext import ConversationHandler, CallbackQueryHandler, Filters
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup
 from telegram import ReplyKeyboardMarkup, ReplyKeyboardRemove
-from boto.s3.connection import S3Connection
 
 # Enable logging
 logging.basicConfig(
@@ -22,6 +21,9 @@ logger = logging.getLogger(__name__)
 SET_LANG = range(1)
 global LANG
 
+
+#Add environment vars:
+TOKEN = os.environ['TOKEN']
 
 
 def start(update, context):
@@ -127,8 +129,6 @@ def main():
 
     dp.add_handler(conv_handler)
 
-    #Add environment vars:
-    TOKEN = os.environ['TOKEN']
     
     # Start DisAtBot:
     updater.start_polling()
