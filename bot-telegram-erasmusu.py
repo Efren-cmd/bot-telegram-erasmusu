@@ -128,7 +128,7 @@ def main():
     dp.add_handler(conv_handler)
 
     #Add environment vars:
-    s3 = S3Connection(os.environ['TOKEN'])
+    TOKEN = os.environ['TOKEN']
     
     # Start DisAtBot:
     updater.start_polling()
