@@ -30,7 +30,7 @@ def start(update, context):
     nombre=user.first_name
     keyboard = [[InlineKeyboardButton("English", callback_data='EN')],
     [InlineKeyboardButton("Español", callback_data='ES')]]
-    reply_markup = InlineKeyboardMarkup(keyboard)
+
     update.message.reply_text(
     "Hi, please select a language to start. / Hola, por favor selecciona un idioma para comenzar.",
         reply_markup=ReplyKeyboardMarkup(reply_markup=reply_markup))
@@ -43,7 +43,7 @@ def menu(update, context):
     nombre=user.first_name
     keyboard = [[InlineKeyboardButton("English", callback_data='EN')],
     [InlineKeyboardButton("Español", callback_data='ES')]]
-    reply_markup = InlineKeyboardMarkup(keyboard)
+
     update.message.reply_text(
     "Hi, please select a language to start. / Hola, por favor selecciona un idioma para comenzar.",
         reply_markup=ReplyKeyboardMarkup(reply_markup=reply_markup))
