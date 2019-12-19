@@ -26,22 +26,19 @@ TOKEN = os.environ['TOKEN']
 #Start def
 
 def start(update, context):
-    
-    reply_keyboard = [[InlineKeyboardButton('EN', callback_data='EN'), InlineKeyboardButton('ES',callback_data='ES')]]
-    reply_markup = InlineKeyboardMarkup(reply_keyboard)
+    reply_keyboard = [['ES', 'EN']]
     update.message.reply_text(
     "Hi, please select a language to start. / Hola, por favor selecciona un idioma para comenzar.",
-        reply_markup=reply_markup)
+        reply_markup=ReplyKeyboardMarkup(reply_keyboard, one_time_keyboard=True))
 
     return SET_LANG
 
 def menu(update, context):
 
-    reply_keyboard = [[InlineKeyboardButton('EN', callback_data='EN'), InlineKeyboardButton('ES',callback_data='ES')]]
-    reply_markup = InlineKeyboardMarkup(reply_keyboard)
+    reply_keyboard = [['ES', 'EN']]
     update.message.reply_text(
     "Hi, please select a language to start. / Hola, por favor selecciona un idioma para comenzar.",
-        reply_markup=reply_markup)
+        reply_markup=ReplyKeyboardMarkup(reply_keyboard, one_time_keyboard=True))
 
     return SET_LANG
 
