@@ -23,18 +23,6 @@ global LANG
 #Add environment vars:
 TOKEN = os.environ['TOKEN']
 
-#Add email
-recipient = 'emailaddress'
-subject = 'mysubject'
-
-with open('body.txt', 'r') as b:
-    body = b.read()
-
-body = body.replace(' ', '%20')
-
-webbrowser.open('mailto:?to=' + recipient + '&subject=' + subject + '&body=' + body, new=1)
-
-
 #Start def
 
 def start(update, context):
