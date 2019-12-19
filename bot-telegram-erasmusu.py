@@ -43,7 +43,7 @@ def menu(update, context):
 def set_lang(update, context):
     user = update.message.from_user
     nombre=user.first_name
-    logger.info("Language of %s: %s", user.first_name, update.message.text)
+    logger.info("Language of %s: %s", user.first_name, update.callback_query)
     query = update.callback_query
     if update.callback_query.data == 'EN':
         keyboard = [[InlineKeyboardButton("I’m looking for accommodation (link)",url="https://cutt.ly/CrqHEz8", callback_data='1')],
