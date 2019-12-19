@@ -26,6 +26,8 @@ TOKEN = os.environ['TOKEN']
 #Start def
 
 def start(update, context):
+    user = update.message.from_user
+    nombre=user.first_name
     keyboard = [[InlineKeyboardButton("English", callback_data='EN')],
     [InlineKeyboardButton("Español", callback_data='ES')]]
     reply_markup = InlineKeyboardMarkup(keyboard)
@@ -38,7 +40,12 @@ def start(update, context):
 
 def menu(update, context):
 
-    reply_keyboard = [['ES', 'EN']]
+    user = update.message.from_user
+    nombre=user.first_name
+    keyboard = [[InlineKeyboardButton("English", callback_data='EN')],
+    [InlineKeyboardButton("Español", callback_data='ES')]]
+    reply_markup = InlineKeyboardMarkup(keyboard)
+    update.message.reply_text('Hi '+nombre+'! What you need?',reply_markup=reply_markup)
     update.message.reply_text(
     "Hi, please select a language to start. / Hola, por favor selecciona un idioma para comenzar.",
         reply_markup=ReplyKeyboardMarkup(reply_keyboard, one_time_keyboard=True))
@@ -48,8 +55,8 @@ def menu(update, context):
 
 def set_lang(update, context):
     user = update.message.from_user
-    logger.info("Language of %s: %s", user.first_name, update.message.text)
     nombre=user.first_name
+    logger.info("Language of %s: %s", user.first_name, update.message.text)
     query = update.callback_query
     if update.callback_query.data == 'EN':
         keyboard = [[InlineKeyboardButton("I’m looking for accommodation (link)",url="https://cutt.ly/CrqHEz8", callback_data='1')],
