@@ -8,39 +8,49 @@ from telegram.ext import Updater, CommandHandler, MessageHandler, RegexHandler
 from telegram.ext import ConversationHandler, CallbackQueryHandler, Filters
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup
 from telegram import ReplyKeyboardMarkup, ReplyKeyboardRemove
+import webbrowser
 
 # Enable logging
 logging.basicConfig(
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
     level=logging.INFO)
-
 logger = logging.getLogger(__name__)
 
 # Global vars:
-
 SET_LANG = range(1)
 global LANG
-
 
 #Add environment vars:
 TOKEN = os.environ['TOKEN']
 
+#Add email
+recipient = 'emailaddress'
+subject = 'mysubject'
+
+with open('body.txt', 'r') as b:
+    body = b.read()
+
+body = body.replace(' ', '%20')
+
+webbrowser.open('mailto:?to=' + recipient + '&subject=' + subject + '&body=' + body, new=1)
+
+
+#Start def
 
 def start(update, context):
-
+    nombre=user.first_name
     reply_keyboard = [['ES', 'EN']]
-    update.message.reply_text(
-    "Please select a language to start. / Por favor selecciona un idioma \
+    update.message.reply_text("Hi, "+nombre+" .Please select a language to start. / Hola, "+nombre+". Por favor selecciona un idioma \
         para comenzar.",
         reply_markup=ReplyKeyboardMarkup(reply_keyboard, one_time_keyboard=True))
 
     return SET_LANG
 
 def menu(update, context):
+    nombre=user.first_name
     reply_keyboard = [['ES', 'EN']]
-
     update.message.reply_text(
-    "Please select a language to start. / Por favor selecciona un idioma \
+    "Hi, "+nombre+". Please select a language to start. / Hola, "+nombre+". Por favor selecciona un idioma \
         para comenzar.",
         reply_markup=ReplyKeyboardMarkup(reply_keyboard, one_time_keyboard=True))
 
@@ -62,11 +72,11 @@ def set_lang(update, context):
 
 
     if update.message.text == 'ES':
-        keyboard = [[InlineKeyboardButton("Estoy buscando alojamiento (link)",url="https://cutt.ly/CrqHEz8", callback_data='1')],
-        [InlineKeyboardButton("Necesito ayuda con mi alojamiento", callback_data='2')],
-        [InlineKeyboardButton("Soy un usuario verificado y necesito ayuda con mi perfil", callback_data='3')],
-        [InlineKeyboardButton("Soy un usuario no verificado y necesito ayuda con mi perfil", callback_data='4')],
-        [InlineKeyboardButton("Tengo otra consulta", callback_data='5')]]
+        keyboard = [[InlineKeyboardButton("Estoy buscando alojamiento (link)",url="https://cutt.ly/CrqHEz8", callback_data='6')],
+        [InlineKeyboardButton("Necesito ayuda con mi alojamiento", callback_data='7')],
+        [InlineKeyboardButton("Soy un usuario verificado y necesito ayuda con mi perfil", callback_data='8')],
+        [InlineKeyboardButton("Soy un usuario no verificado y necesito ayuda con mi perfil", callback_data='9')],
+        [InlineKeyboardButton("Tengo otra consulta", callback_data='10')]]
         reply_markup = InlineKeyboardMarkup(keyboard)
         update.message.reply_text('¡Hola '+nombre+'! Dinos qué necesitas:',reply_markup=reply_markup)
 
@@ -74,10 +84,10 @@ def set_lang(update, context):
 def button(update, context):
     query = update.callback_query
     if update.callback_query.data == '1': query.edit_message_text(text="Selected option: 1")
-    elif update.callback_query.data == '2': query.edit_message_text(text="Hello. Please write your inquiry to bookings@erasmusu.com and one agent will get in touch with you as soon as possible")
-    elif update.callback_query.data == '3': query.edit_message_text(text="Hello. Please write your inquiry to bookings@erasmusu.com and one agent will get in touch with you as soon as possible")
-    elif update.callback_query.data == '4': query.edit_message_text(text="Hello. Please write your inquiry to info@erasmusu.com and one agent will get in touch with you as soon as possible")
-    elif update.callback_query.data == '5': query.edit_message_text(text="Hello. Please write your inquiry to info@erasmusu.com and one agent will get in touch with you as soon as possible")
+    elif update.callback_query.data == '2': query.edit_message_text(text="Please write your inquiry to bookings@erasmusu.com and one agent will get in touch with you as soon as possible")
+    elif update.callback_query.data == '3': query.edit_message_text(text="Please write your inquiry to bookings@erasmusu.com and one agent will get in touch with you as soon as possible")
+    elif update.callback_query.data == '4': query.edit_message_text(text="Please write your inquiry to info@erasmusu.com and one agent will get in touch with you as soon as possible")
+    elif update.callback_query.data == '5': query.edit_message_text(text="Please write your inquiry to info@erasmusu.com and one agent will get in touch with you as soon as possible")
 
     query = update.callback_query
     if update.callback_query.data == '6': query.edit_message_text(text="Selected option: 1")
