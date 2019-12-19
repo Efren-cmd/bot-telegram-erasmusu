@@ -26,7 +26,7 @@ TOKEN = os.environ['TOKEN']
 #Start def
 
 def start(update, context):
-    reply_keyboard = [[InlineKeyboardButton('EN', callback_data='EN'), InlineKeyboardButton('ES', callback_data='ES')]]
+    reply_keyboard = [[InlineKeyboardButton('EN', callback_data='EN')], [InlineKeyboardButton('ES', callback_data='ES')]]
     reply_markup = InlineKeyboardMarkup(reply_keyboard)
     update.message.reply_text(
     "Hi, please select a language to start. / Hola, por favor selecciona un idioma para comenzar.",
@@ -78,7 +78,7 @@ def button(update, context):
     elif update.callback_query.data == '5': query.edit_message_text(text="Please write your inquiry to info@erasmusu.com and one agent will get in touch with you as soon as possible")
 
     query = update.callback_query
-    if update.callback_query.data == '6': query.edit_message_text(text="Selected option: 1")
+    if update.callback_query.data == '6': query.edit_message_text(text="Selected option: 7")
     elif update.callback_query.data == '7': query.edit_message_text(text="Por favor escribe tu consulta a bookings@erasmusu.com y un agente se pondrá en contacto contigo lo antes posible.")
     elif update.callback_query.data == '8': query.edit_message_text(text="Por favor escribe tu consulta a bookings@erasmusu.com y un agente se pondrá en contacto contigo lo antes posible.")
     elif update.callback_query.data == '9': query.edit_message_text(text="Por favor escribe tu consulta a info@erasmusu.com y un agente se pondrá en contacto contigo lo antes posible.")
