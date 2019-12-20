@@ -119,7 +119,8 @@ def main():
         entry_points=[CommandHandler('start', start)],
 
         states={
-            SET_LANG: [CallbackQueryHandler(set_lang)],
+            ES: [CallbackQueryHandler(es)],
+            EN: [CallbackQueryHandler(en)]
 
         },
 
