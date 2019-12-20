@@ -17,7 +17,7 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 # Global vars:
-SET_LANG, ES, EN = range(3)
+ES, EN = range(3)
 
 
 #Add environment vars:
@@ -108,7 +108,6 @@ def main():
     updater.dispatcher.add_handler(CallbackQueryHandler(button))
     updater.dispatcher.add_handler(CallbackQueryHandler(en))
     updater.dispatcher.add_handler(CallbackQueryHandler(es))
-    updater.dispatcher.add_handler(CallbackQueryHandler(set_lang))
     updater.dispatcher.add_handler(CommandHandler('menu', menu))
 
 
