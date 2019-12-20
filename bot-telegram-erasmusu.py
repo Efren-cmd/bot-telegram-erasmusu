@@ -32,7 +32,7 @@ def start(update, context):
     "Hi, please select a language to start. / Hola, por favor selecciona un idioma para comenzar.",
         reply_markup=reply_markup)
 
-    return SET_LANG
+
 
 def menu(update, context):
 
@@ -42,31 +42,30 @@ def menu(update, context):
     "Hi, please select a language to start. / Hola, por favor selecciona un idioma para comenzar.",
         reply_markup=reply_markup)
 
-    return SET_LANG
 
 
-def set_lang(update, context):
+def en(update, context):
     query = update.callback_query
     logger.info("Language: %s", update.callback_query.data)
-
-    if update.callback_query.data == 'EN':
-        keyboard = [[InlineKeyboardButton("I’m looking for accommodation (link)",url="https://cutt.ly/CrqHEz8", callback_data='1')],
-        [InlineKeyboardButton("I need help with my booking", callback_data='2')],
-        [InlineKeyboardButton("I’m a verified user and I need help with my profile", callback_data='3')],
-        [InlineKeyboardButton("I’m a non-verified user and I need help with my profile", callback_data='4')],
-        [InlineKeyboardButton("I have other inquiries", callback_data='5')]]
-        reply_markup = InlineKeyboardMarkup(keyboard)
-        update.message.reply_text('Hi! What you need?',reply_markup=reply_markup)
+    keyboard = [[InlineKeyboardButton("I’m looking for accommodation (link)",url="https://cutt.ly/CrqHEz8", callback_data='1')], [InlineKeyboardButton("I need help with my booking", callback_data='2')],
+    [InlineKeyboardButton("I’m a verified user and I need help with my profile", callback_data='3')],
+    [InlineKeyboardButton("I’m a non-verified user and I need help with my profile", callback_data='4')],
+    [InlineKeyboardButton("I have other inquiries", callback_data='5')]]
+    reply_markup = InlineKeyboardMarkup(keyboard)
+    update.message.reply_text('Hi! What you need?',reply_markup=reply_markup)
 
 
-    if update.callback_query.data == 'ES':
-        keyboard = [[InlineKeyboardButton("Estoy buscando alojamiento (link)",url="https://cutt.ly/CrqHEz8", callback_data='6')],
-        [InlineKeyboardButton("Necesito ayuda con mi alojamiento", callback_data='7')],
-        [InlineKeyboardButton("Soy un usuario verificado y necesito ayuda con mi perfil", callback_data='8')],
-        [InlineKeyboardButton("Soy un usuario no verificado y necesito ayuda con mi perfil", callback_data='9')],
-        [InlineKeyboardButton("Tengo otra consulta", callback_data='10')]]
-        reply_markup = InlineKeyboardMarkup(keyboard)
-        update.message.reply_text('¡Hola! Dinos qué necesitas:',reply_markup=reply_markup)
+
+def es(update, context):
+    query = update.callback_query
+    logger.info("Language: %s", update.callback_query.data)
+    keyboard = [[InlineKeyboardButton("Estoy buscando alojamiento (link)",url="https://cutt.ly/CrqHEz8", callback_data='6')],
+    [InlineKeyboardButton("Necesito ayuda con mi alojamiento", callback_data='7')],
+    [InlineKeyboardButton("Soy un usuario verificado y necesito ayuda con mi perfil", callback_data='8')],
+    [InlineKeyboardButton("Soy un usuario no verificado y necesito ayuda con mi perfil", callback_data='9')],
+    [InlineKeyboardButton("Tengo otra consulta", callback_data='10')]]
+    reply_markup = InlineKeyboardMarkup(keyboard)
+    update.message.reply_text('¡Hola! Dinos qué necesitas:',reply_markup=reply_markup)
 
 
 def button(update, context):
@@ -107,6 +106,8 @@ def main():
     updater = Updater(TOKEN, use_context=True)
 
     updater.dispatcher.add_handler(CallbackQueryHandler(button))
+    updater.dispatcher.add_handler(CallbackQueryHandler(en))
+    updater.dispatcher.add_handler(CallbackQueryHandler(es))
     updater.dispatcher.add_handler(CallbackQueryHandler(set_lang))
     updater.dispatcher.add_handler(CommandHandler('menu', menu))
 
