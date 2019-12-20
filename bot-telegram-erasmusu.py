@@ -40,9 +40,9 @@ def menu(update, context):
 
 
 
-def en(update, context):
+def options(update, context):
     query = update.callback_query
-
+    if update.callback_query.data == 'EN'
     keyboard = [[InlineKeyboardButton("I’m looking for accommodation (link)",url="https://cutt.ly/CrqHEz8", callback_data='1')], [InlineKeyboardButton("I need help with my booking", callback_data='2')],
     [InlineKeyboardButton("I’m a verified user and I need help with my profile", callback_data='3')],
     [InlineKeyboardButton("I’m a non-verified user and I need help with my profile", callback_data='4')],
@@ -50,11 +50,7 @@ def en(update, context):
     reply_markup = InlineKeyboardMarkup(keyboard)
     update.message.reply_text('Hi! What you need?',reply_markup=reply_markup)
 
-
-
-def es(update, context):
-    query = update.callback_query
-
+    if update.callback_query.data == 'ES'
     keyboard = [[InlineKeyboardButton("Estoy buscando alojamiento (link)",url="https://cutt.ly/CrqHEz8", callback_data='6')],
     [InlineKeyboardButton("Necesito ayuda con mi alojamiento", callback_data='7')],
     [InlineKeyboardButton("Soy un usuario verificado y necesito ayuda con mi perfil", callback_data='8')],
@@ -102,8 +98,7 @@ def main():
     updater = Updater(TOKEN, use_context=True)
 
     updater.dispatcher.add_handler(CallbackQueryHandler(button))
-    updater.dispatcher.add_handler(CallbackQueryHandler(en))
-    updater.dispatcher.add_handler(CallbackQueryHandler(es))
+    updater.dispatcher.add_handler(CallbackQueryHandler(options))
     updater.dispatcher.add_handler(CommandHandler('menu', menu))
     updater.dispatcher.add_handler(CommandHandler('start', start))
 
