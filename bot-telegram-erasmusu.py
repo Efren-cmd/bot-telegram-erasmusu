@@ -118,7 +118,7 @@ def main():
         entry_points=[CommandHandler('start', start)],
 
         states={
-            SET_LANG: [MessageHandler(Filters.regex('^(ES|EN)$'), set_lang)],
+            SET_LANG: [CallbackQueryHandler(Filters.regex('^(ES|EN)$'), set_lang)],
 
         },
 
