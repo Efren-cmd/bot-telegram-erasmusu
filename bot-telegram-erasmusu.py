@@ -67,14 +67,11 @@ def button(update, context):
     elif update.callback_query.data == '3': query.edit_message_text(text="Please write your inquiry to bookings@erasmusu.com and one agent will get in touch with you as soon as possible")
     elif update.callback_query.data == '4': query.edit_message_text(text="Please write your inquiry to info@erasmusu.com and one agent will get in touch with you as soon as possible")
     elif update.callback_query.data == '5': query.edit_message_text(text="Please write your inquiry to info@erasmusu.com and one agent will get in touch with you as soon as possible")
-
-    query = update.callback_query
-    if update.callback_query.data == '6': query.edit_message_text(text="Selected option: 7")
+    elif update.callback_query.data == '6': query.edit_message_text(text="Selected option: 7")
     elif update.callback_query.data == '7': query.edit_message_text(text="Por favor escribe tu consulta a bookings@erasmusu.com y un agente se pondrá en contacto contigo lo antes posible.")
     elif update.callback_query.data == '8': query.edit_message_text(text="Por favor escribe tu consulta a bookings@erasmusu.com y un agente se pondrá en contacto contigo lo antes posible.")
     elif update.callback_query.data == '9': query.edit_message_text(text="Por favor escribe tu consulta a info@erasmusu.com y un agente se pondrá en contacto contigo lo antes posible.")
     elif update.callback_query.data == '10': query.edit_message_text(text="Por favor escribe tu consulta a info@erasmusu.com y un agente se pondrá en contacto contigo lo antes posible.")
-    return ConversationHandler.END
 
 def help(update, context):
     """
@@ -101,6 +98,7 @@ def main():
     updater.dispatcher.add_handler(CallbackQueryHandler(options))
     updater.dispatcher.add_handler(CommandHandler('menu', menu))
     updater.dispatcher.add_handler(CommandHandler('start', start))
+    updater.dispatcher.add_handler(CommandHandler('help', help))
 
 
     # Get the dispatcher to register handlers:
