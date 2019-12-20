@@ -16,17 +16,13 @@ logging.basicConfig(
     level=logging.INFO)
 logger = logging.getLogger(__name__)
 
-# Global vars:
-ES, EN = range(2)
-
-
 #Add environment vars:
 TOKEN = os.environ['TOKEN']
 
 #Start def
 
 def start(update, context):
-    reply_keyboard = [[InlineKeyboardButton('EN', callback_data=str(EN)), InlineKeyboardButton('ES', callback_data=str(ES))]]
+    reply_keyboard = [[InlineKeyboardButton('EN', callback_data='EN'), InlineKeyboardButton('ES', callback_data='ES')]]
     reply_markup = InlineKeyboardMarkup(reply_keyboard)
     update.message.reply_text(
     "Hi, please select a language to start. / Hola, por favor selecciona un idioma para comenzar.",
@@ -36,7 +32,7 @@ def start(update, context):
 
 def menu(update, context):
 
-    reply_keyboard = [[InlineKeyboardButton('EN', callback_data=str(EN)), InlineKeyboardButton('ES', callback_data=str(ES))]]
+    reply_keyboard = [[InlineKeyboardButton('EN', callback_data='EN'), InlineKeyboardButton('ES', callback_data='ES')]]
     reply_markup = InlineKeyboardMarkup(reply_keyboard)
     update.message.reply_text(
     "Hi, please select a language to start. / Hola, por favor selecciona un idioma para comenzar.",
@@ -113,6 +109,21 @@ def main():
 
     # Get the dispatcher to register handlers:
     dp = updater.dispatcher
+
+    # Add conversation handler with predefined states:
+    conv_handler = ConversationHandler(
+        entry_points=[CommandHandler('start', start)],
+
+        states={
+            ES: [CallbackQueryHandler(es)],
+            EN: [CallbackQueryHandler(en)]
+
+        },
+
+        fallbacks=[CommandHandler('help', help),CommandHandler('start', start)]
+    )
+
+    dp.add_handler(conv_handler)
 
 
     # Start DisAtBot:
