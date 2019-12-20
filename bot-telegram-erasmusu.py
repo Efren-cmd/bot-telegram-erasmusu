@@ -107,6 +107,7 @@ def main():
     updater = Updater(TOKEN, use_context=True)
 
     updater.dispatcher.add_handler(CallbackQueryHandler(button))
+    updater.dispatcher.add_handler(CallbackQueryHandler(set_lang))
     updater.dispatcher.add_handler(CommandHandler('menu', menu))
 
 
@@ -118,7 +119,7 @@ def main():
         entry_points=[CommandHandler('start', start)],
 
         states={
-            SET_LANG: [CallbackQueryHandler(Filters.regex('^(ES|EN)$'), set_lang)],
+            SET_LANG: [CallbackQueryHandler(set_lang)],
 
         },
 
