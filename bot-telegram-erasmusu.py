@@ -42,7 +42,7 @@ def menu(update, context):
 
 def en(update, context):
     query = update.callback_query
-    logger.info("Language: %s", update.callback_query.data)
+
     keyboard = [[InlineKeyboardButton("I’m looking for accommodation (link)",url="https://cutt.ly/CrqHEz8", callback_data='1')], [InlineKeyboardButton("I need help with my booking", callback_data='2')],
     [InlineKeyboardButton("I’m a verified user and I need help with my profile", callback_data='3')],
     [InlineKeyboardButton("I’m a non-verified user and I need help with my profile", callback_data='4')],
@@ -54,7 +54,7 @@ def en(update, context):
 
 def es(update, context):
     query = update.callback_query
-    logger.info("Language: %s", update.callback_query.data)
+
     keyboard = [[InlineKeyboardButton("Estoy buscando alojamiento (link)",url="https://cutt.ly/CrqHEz8", callback_data='6')],
     [InlineKeyboardButton("Necesito ayuda con mi alojamiento", callback_data='7')],
     [InlineKeyboardButton("Soy un usuario verificado y necesito ayuda con mi perfil", callback_data='8')],
@@ -105,6 +105,7 @@ def main():
     updater.dispatcher.add_handler(CallbackQueryHandler(en))
     updater.dispatcher.add_handler(CallbackQueryHandler(es))
     updater.dispatcher.add_handler(CommandHandler('menu', menu))
+    updater.dispatcher.add_handler(CommandHandler('start', start))
 
 
     # Get the dispatcher to register handlers:
