@@ -17,7 +17,7 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 # Global vars:
-ES, EN = range(3)
+ES, EN = range(2)
 
 
 #Add environment vars:
