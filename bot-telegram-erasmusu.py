@@ -42,6 +42,7 @@ def menu(update, context):
 
 def options(update, context):
     query = update.callback_query
+    logger.info("User {} asked for help.".format(user.first_name))
     if update.callback_query.data == 'EN':
         keyboard = [[InlineKeyboardButton("I’m looking for accommodation (link)",url="https://cutt.ly/CrqHEz8", callback_data='1')], [InlineKeyboardButton("I need help with my booking", callback_data='2')],
     [InlineKeyboardButton("I’m a verified user and I need help with my profile", callback_data='3')],
