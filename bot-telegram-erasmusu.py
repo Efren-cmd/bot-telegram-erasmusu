@@ -110,21 +110,6 @@ def main():
     # Get the dispatcher to register handlers:
     dp = updater.dispatcher
 
-    # Add conversation handler with predefined states:
-    conv_handler = ConversationHandler(
-        entry_points=[CommandHandler('start', start)],
-
-        states={
-            ES: [CallbackQueryHandler(es)],
-            EN: [CallbackQueryHandler(en)]
-
-        },
-
-        fallbacks=[CommandHandler('help', help),CommandHandler('start', start)]
-    )
-
-    dp.add_handler(conv_handler)
-
 
     # Start DisAtBot:
     updater.start_polling()
