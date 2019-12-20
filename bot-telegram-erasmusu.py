@@ -46,7 +46,7 @@ def menu(update, context):
 
 
 def set_lang(update, context):
-
+    query = update.callback_query
     logger.info("Language: %s", update.callback_query.data)
 
     if update.callback_query.data == 'EN':
